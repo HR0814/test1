@@ -15,7 +15,6 @@ def game1(request):
      return HttpResponse(result)
 
 def test(request):
-
     rand = random.randint(1,10)
     sang = 상식.objects.get(고유번호 = rand)
 
@@ -24,3 +23,11 @@ def test(request):
         {'data': sang}
 
     )
+    
+def testmusic(request):
+
+    return render(
+        request, 'firstgame/testmusic.html'
+
+    )
+    
