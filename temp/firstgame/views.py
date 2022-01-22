@@ -17,7 +17,7 @@ def game1(request):
 def test(request):
 
     rand = random.randint(1,10)
-    sang = 상식.objects.all()
+    sang = 상식.objects.get(고유번호 = rand)
 
     return render(
         request, 'firstgame/test.html',
