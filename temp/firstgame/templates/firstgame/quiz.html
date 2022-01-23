@@ -1,0 +1,56 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/background.css' %}">
+
+<html><head><style>
+    .text {
+        font-family: 'Nanum Gothic', 돋움;
+        font-size: 50px;
+        font-weight: bolder;
+        text-align: center;
+    }
+    .answer {
+        font-family: 'Nanum Gothic', 돋움;
+        font-size: 50px;
+        font-weight: bolder;
+        text-align: center;
+    }
+    .button {
+        font-family: 'Nanum Gothic', 돋움;
+        font-size: 50px;
+        font-weight: bolder;
+        text-align: center;
+    }
+</style></head>
+
+<body>
+    <div class="container">
+        <div class="col">
+            <div class="col-md-1">
+                <h1 class="text">
+                    {{ cls }}
+                </h1>
+            </div>
+            <div class="col-md-1">
+                <form class="text">
+                    {{ count }}번 문제. {{ info }}
+                </form>
+            </div>
+            <div class="col-md-1">
+                <form class="text" action="/first/answer/" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="a">
+                    {% for data in info %}
+                        <input type="hidden" name="id" value="{{ data.id }}">
+                    {% endfor %}
+                    <input type="hidden" name="count" value="{{ count }}">
+                    <input type="hidden" name="result" value="{{ result }}">
+                    <input type="hidden" name="answer" value="{{ answer }}">
+                    <input type="submit" value="정답 확인">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

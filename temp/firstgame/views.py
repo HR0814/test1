@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+from django.core.paginator import Paginator
 # Create your views here.
 from firstgame.models import * # 커리큘럼 클래스 사용
 import random
@@ -31,3 +32,64 @@ def testmusic(request):
 
     )
     
+def quiz(request):
+    rand = random.randint(1,10)
+    if request.method == 'POST':
+        id = request.POST.get('id')
+        count = request.POST.get('count')
+        result = request.POST.get('result')
+    elif request.method == 'GET':
+        count = 1
+        result = ""
+    else:
+        id = 1
+    if count is None:
+        count = 1
+    num = 2
+    now_page = request.GET.get('page', num)
+    
+    info = 상식.objects.get(고유번호 = rand)
+    cls = info.카테고리
+    answer = info.정답
+    info = info.문제
+    # p = Paginator(datas, 1)
+    # info = p.page(now_page)
+    if int(count) > 10:
+        context = {
+            'result': result,
+        }
+        return render(request, 'firstgame/result.html', context)
+    else:
+        context = {
+            'info' : info,
+            'count' : count,
+            'result': result,
+            'cls': cls,
+            'answer': answer,
+        }
+    return render(request, 'firstgame/quiz.html', context)
+    
+
+def answer(request):
+    if request.method == 'POST':
+        num2 = request.POST.get('id')
+        info = request.POST.get('info')
+        a = request.POST.get('a')
+        count = request.POST.get('count')
+        result = request.POST.get('result')
+        answer = request.POST.get('answer')
+        print("정답 : ", a, answer)
+        if answer == a:
+            answer = count + "번 문제는 정답입니다."
+            result += "1"
+        else:
+            answer = count + "번 문제는 오답입니다."
+            result += "0"
+        data = {
+            'info' : answer,
+            'id': num2,
+            'count' : count,
+            'result': result,
+        }
+    
+    return render(request, 'firstgame/answer.html', data)

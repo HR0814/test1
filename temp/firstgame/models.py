@@ -15,4 +15,4 @@ class 상식(models.Model):
         managed = False
 
     def __str__(self):
-        return '@@@' + self.name  
+        return '@@@' + self.name
