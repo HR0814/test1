@@ -5,25 +5,23 @@
 
     <br>
  
-        <b>{{cnt}}. {{lis.1}}</b><br><br>
+        <b>마지막 문제. {{lis.1}}</b><br><br>
         <label for="tex1">정답:</label><br>
         <input type="text" id ="answer"><br><br>
-        <INPUT type='button' value='다음 문제' id="next">  
+        <INPUT type='button' value='결과 보기' id="next">  
        
 </body>
 
 <script type="text/javascript">
     var signinButton = document.getElementById("next") 
     signinButton.addEventListener('click', signinFunc)
-    var an = "{{lis.2}}";
+    var an = "{{lis.1}}";
     function signinFunc () {
         var answer = document.getElementById("answer").value;
         if(an === answer){
             alert("정답입니다.")
-            location.href="http://127.0.0.1:8000/first/test/"
         }else{
             alert("오답입니다.")
-            location.href="http://127.0.0.1:8000/first/test/"
         }
     }
 </script>

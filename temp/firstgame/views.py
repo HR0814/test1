@@ -16,15 +16,44 @@ def game1(request):
      return HttpResponse(result)
 
 def test(request):
-    rand = random.randint(1,10)
-    sang = 상식.objects.get(고유번호 = rand)
+    global count
+    global lis
+    lis2 = []
 
-    return render(
-        request, 'firstgame/test.html',
-        {'data': sang}
+    for i in lis[0]:
+        lis2.append(i)
 
-    )
+    del lis[0]
+
+    count += 1
+
+    if count < 5:
+        return render(request, 'firstgame/test.html', {
+             'lis' : lis2, 'cnt' : count
+        })
+    else :
+        count = 0
+        return render(request, 'firstgame/testLast.html', {
+             'lis' : lis2, 'cnt' : count
+        })
     
+def start(request):
+    global lis
+    global count
+
+    lis = [[None for i in range(4)]for j in range(5)]
+    rand = random.sample(range(1,11),5)
+
+    for i in range(5):
+        sangsick = 상식.objects.get(고유번호 = rand[i])
+        lis[i][0] = sangsick.고유번호
+        lis[i][1] = sangsick.문제
+        lis[i][2] = sangsick.정답
+        lis[i][3] = sangsick.카테고리
+    count = 0
+
+    return render(request, 'firstgame/start.html')
+
 def testmusic(request):
 
     return render(
