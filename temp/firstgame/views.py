@@ -118,7 +118,7 @@ def answer(request):
         str = request.POST.get('rand')
         print("/" + str + "/")
         rand = str.split(" ")
-        answer = 상식.objects.get(고유번호=int(rand[int(count)]))
+        answer = 상식.objects.get(고유번호=int(rand[int(count) - 1]))
         print("answer에서 받음 : /%s/%s/ " % (rand, str))
         if answer.정답 == a:
             answer = count + "번 문제는 정답입니다."
