@@ -6,7 +6,7 @@ from firstgame.models import *  # 커리큘럼 클래스 사용
 import random
 
 # Create your views here.
-
+rand = []
 
 def game1(request):
     rand = random.randint(1, 10)
@@ -68,7 +68,7 @@ def testmusic(request):
 
 
 def quiz(request):
-    rand = random.randint(1, 10)
+    global rand
     if request.method == 'POST':
         id = request.POST.get('id')
         count = request.POST.get('count')
@@ -83,7 +83,15 @@ def quiz(request):
     num = 2
     now_page = request.GET.get('page', num)
 
-    info = 상식.objects.get(고유번호=rand)
+    if int(count) == 1:
+        rand = random.sample(range(1, 21), 10)
+
+    elif int(count) < 10:
+        del rand[0]
+        
+    randNum = rand[0]
+
+    info = 상식.objects.get(고유번호=randNum)
     cls = info.카테고리
     answer = info.정답
     info = info.문제
