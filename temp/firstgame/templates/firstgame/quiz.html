@@ -77,13 +77,17 @@
         <div class="col">
             <div class="col-md">
                 <h1 class="header">
-                    {{ cls }}
+                    {% for data in info %}
+                        {{ data.카테고리 }}
+                    {% endfor %}
                 </h1>
             </div>
             <div class="col-md">
                 <form class="quest">
                     {{ count }}번 문제.<br>
-                    {{ info }}
+                    {% for data in info %}
+                        {{ data.문제 }}
+                    {% endfor %}
                 </form>
             </div>
             <div class="col-md">
@@ -95,6 +99,7 @@
                     {% endfor %}
                     <input type="hidden" name="count" value="{{ count }}">
                     <input type="hidden" name="result" value="{{ result }}">
+                    <input type="hidden" name="rand" value="{{ rand }}">
                     <input class="answer" type="hidden" name="answer" value="{{ answer }}">
                     <input class="button" type="submit" value="답안 제출">
                 </form>

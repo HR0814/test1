@@ -68,27 +68,31 @@ def testmusic(request):
 
 
 def quiz(request):
-    rand = random.randint(1, 10)
+    datas = 상식.objects.order_by('고유번호')
+    p = Paginator(datas, 1)
+
     if request.method == 'POST':
+        str = request.POST.get("rand")
+        rand = str.split(" ")
         id = request.POST.get('id')
         count = request.POST.get('count')
         result = request.POST.get('result')
     elif request.method == 'GET':
         count = 1
         result = ""
+        rand = random.sample(range(1, p.count), 10 + 1)
+        str = ""
+        str += "%s" % rand[0]
+        for i in range(1, len(rand)):
+            str += " %s" % rand[i]
     else:
         id = 1
     if count is None:
         count = 1
     num = 2
-    now_page = request.GET.get('page', num)
 
-    info = 상식.objects.get(고유번호=rand)
-    cls = info.카테고리
-    answer = info.정답
-    info = info.문제
-    # p = Paginator(datas, 1)
-    # info = p.page(now_page)
+    info = p.page(int(rand[int(count) - 1]))
+    print("quiz에서 받음 : /%s/%s/ " % (rand, str))
     if int(count) > 10:
         context = {
             'result': result,
@@ -99,8 +103,7 @@ def quiz(request):
             'info': info,
             'count': count,
             'result': result,
-            'cls': cls,
-            'answer': answer,
+            'rand': str,
         }
     return render(request, 'firstgame/quiz.html', context)
 
@@ -112,9 +115,12 @@ def answer(request):
         a = request.POST.get('a')
         count = request.POST.get('count')
         result = request.POST.get('result')
-        answer = request.POST.get('answer')
-        print("정답 : ", a, answer)
-        if answer == a:
+        str = request.POST.get('rand')
+        print("/" + str + "/")
+        rand = str.split(" ")
+        answer = 상식.objects.get(고유번호=int(rand[int(count)]))
+        print("answer에서 받음 : /%s/%s/ " % (rand, str))
+        if answer.정답 == a:
             answer = count + "번 문제는 정답입니다."
             result += "1"
         else:
@@ -125,6 +131,7 @@ def answer(request):
             'id': num2,
             'count': count,
             'result': result,
+            'rand': str,
         }
 
     return render(request, 'firstgame/answer.html', data)
