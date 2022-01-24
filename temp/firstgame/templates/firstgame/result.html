@@ -1,56 +1,52 @@
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/background.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/background.css' %}" />
 
-<html><head><style>
-    body {
-        //background-image:url('/static/img/bg.jpg');
-        background-size:cover;
-    }
-    .text {
-        color: white;
-        font-family: 'Nanum Gothic', 돋움;
-        font-size: 50px;
-        font-weight: bolder;
-        text-align: center;
-    }
-    .answer {
-        color: black;
-        font-family: 'Nanum Gothic', 돋움;
-        font-size: 50px;
-        font-weight: bolder;
-        text-align: center;
-    }
-    .button {
-        color: black;
-        font-family: 'Nanum Gothic', 돋움;
-        font-size: 50px;
-        font-weight: bolder;
-        text-align: center;
-    }
-</style></head>
+<html>
+    <head>
+        <style>
+            body {
+                background-image: url("/static/img/bg.jpg");
+                background-size: cover;
+            }
+            .text {
+                color: white;
+                font-family: "Nanum Gothic", 돋움;
+                font-size: 50px;
+                font-weight: bolder;
+                text-align: center;
+            }
+            .answer {
+                color: black;
+                font-family: "Nanum Gothic", 돋움;
+                font-size: 50px;
+                font-weight: bolder;
+                text-align: center;
+            }
+            .button {
+                color: black;
+                font-family: "Nanum Gothic", 돋움;
+                font-size: 50px;
+                font-weight: bolder;
+                text-align: center;
+            }
+        </style>
+    </head>
 
-<body>
-    <h1>결과</h1>
-    <table class='table table-striped'>
-        <tr>
-            <td>문항</td>
-            <td>결과</td>
-        </tr>
-        {% for data in result %}
-        <tr>
-            <td>{{ forloop.counter }}번</td>
-            <td>
-                {% if data == "1" %}
-                    정답
-                {% else %}
-                    오답
-                {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
-    <button calss="button" onclick="location.href='../../index.html'">돌아가기</button>
-</body>
-
+    <body>
+        <h1>결과</h1>
+        <table class="table table-striped">
+            <tr>
+                <td>문항</td>
+                <td>결과</td>
+            </tr>
+            {% for data in result %}
+            <tr>
+                <td>{{ forloop.counter }}번</td>
+                <td>{% if data == "1" %} 정답 {% else %} 오답 {% endif %}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <button calss="button" onclick="location.href='home'">돌아가기</button>
+    </body>
 </html>
