@@ -8,7 +8,7 @@
         background-position: 0 0;
     }
     to {
-        background-position: 0 900px;
+        background-position: 0 955px;
     }
 }
 
@@ -57,7 +57,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 20px;
 }
 
 .start-text {
@@ -105,7 +104,7 @@ body {
 }
 
 .image-container {
-    margin-top: 100px;
+    margin-top: 80px;
     display: flex;
     justify-content: center;
 }
