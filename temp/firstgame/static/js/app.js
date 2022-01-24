@@ -63,7 +63,7 @@ const imageAnimation = (name) => {
         jupyterText.innerText = "";
     } else if (name == saturn.className) {
         saturn_css.animation = "1.5s ease-in-out 0s infinite normal none running imageMove";
-        earth_css.animation = "";
+        earth_gicss.animation = "";
         moon_css.animation = "";
         jupyter_css.animation = "";
         saturnText.innerText = "Press Enter";
