@@ -1,9 +1,26 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/background.css' %}">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.mb.YTPlayer/3.3.9/css/jquery.mb.YTPlayer.min.css">
 
-<html><head><style>
+<div id="background" class="player" data-property="{
+    videoURL: 'https://www.youtube.com/watch?v=skn3Tadjvg8',
+    mute: true,
+    showControls: false,
+    useOnMobile: true,
+    quality: 'highres',
+    containment: 'body',
+    loop: true,
+    autoPlay: true,
+    stopMovieOnBlur: false,
+    startAt: 3,
+    opacity: 1
+    }">
+</div>
+<html><head>
+    <style>
     .text {
+        color: white;
         font-family: 'Nanum Gothic', 돋움;
         font-size: 50px;
         font-weight: bolder;
@@ -51,6 +68,14 @@
             </div>
         </div>
     </div>
+
+    <script src="//code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mb.YTPlayer/3.3.9/jquery.mb.YTPlayer.min.js"></script>
+    <script>
+        jQuery( function() {
+            jQuery( '#background' ).YTPlayer();
+        });
+    </script>
 </body>
 
 </html>
