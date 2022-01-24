@@ -6,7 +6,7 @@ from firstgame.models import *  # 커리큘럼 클래스 사용
 import random
 
 # Create your views here.
-rand = []
+# rand = []
 
 def game1(request):
     rand = random.randint(1, 10)
