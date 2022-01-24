@@ -128,3 +128,7 @@ def answer(request):
         }
 
     return render(request, 'firstgame/answer.html', data)
+
+
+def home(request):
+    return render(request, 'firstgame/index.html', {})

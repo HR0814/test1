@@ -21,7 +21,6 @@ const jupyter_css = document.styleSheets[1].rules[16].style;
 // Input Keyboard Function
 const handleMove = (e) => {
     const key = e.key;
-    console.log(window.screen.height);
     c_name = rocket.className;
     if (key == "ArrowRight" && cnt <= 3) {
         rocket.style.marginLeft = `${left}%`;
@@ -63,7 +62,7 @@ const imageAnimation = (name) => {
         jupyterText.innerText = "";
     } else if (name == saturn.className) {
         saturn_css.animation = "1.5s ease-in-out 0s infinite normal none running imageMove";
-        earth_gicss.animation = "";
+        earth_css.animation = "";
         moon_css.animation = "";
         jupyter_css.animation = "";
         saturnText.innerText = "Press Enter";
@@ -147,5 +146,4 @@ earth.addEventListener("mouseenter", earthMouseEnter);
 moon.addEventListener("mouseenter", moonMouseEnter);
 saturn.addEventListener("mouseenter", saturnMouseEnter);
 jupyter.addEventListener("mouseenter", jupyterMouseEnter);
-rocket.addEventListener("mouseenter", test);
 window.addEventListener("keydown", handleMove);
