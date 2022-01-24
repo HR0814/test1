@@ -18,30 +18,51 @@
     }">
 </div>
 <html><head><style>
+    body {
+        width: 100%;
+        height: 100%;
+    }
     .text {
         color: white;
         font-family: 'Nanum Gothic', 돋움;
         font-size: 50px;
         font-weight: bolder;
         text-align: center;
+        margin: 3em;
+    }
+    .containers {
+        //background-color: #ff00ff;
+        overflow:hidden;
+        width: 100vw;
+        height: 100vh;
+    }
+    .col-md {
+        width: 100%;
+    }
+    .button {
+        width: 40%;
+        font-family: 'Nanum Gothic', 돋움;
+        font-size: 4vw;
+        font-weight: bolder;
+        text-align: center;
     }
 </style></head>
 <body>
     {{ data }}
-    <div class="container">
+    <div class="containers">
         <div class="col">
-            <div class="col-md-1">
+            <div class="col-md">
                 <h1 class="text"> 
                     {{ info }}
                 </h1>
             </div>
-            <div class="col-md-1">
+            <div class="col-md">
                 <form class="text" action="/first/quiz/" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="id" value="{{ id }}">
                     <input type="hidden" name="result" value="{{ result }}">
                     <input type="hidden" name="count" value="{{ count | add:'1' }}">
-                    <input type="submit" value="다음 문제">
+                    <input class="button" type="submit" value="다음 문제">
                 </form>
             </div>
         </div>

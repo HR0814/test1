@@ -19,6 +19,27 @@
 </div>
 <html><head>
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dongle&display=swap');
+    body {
+        width: 100%;
+        height: 100%;
+    }
+    .header {
+        background-color: ghostwhite;
+        color: black;
+        font-family: 'Dongle', sans-serif;
+        font-size: 50px;
+        font-weight: bolder;
+        text-align: center;
+    }
+    .quest {
+        color: white;
+        font-family: 'Nanum Gothic', 돋움;
+        font-size: 50px;
+        font-weight: bolder;
+        text-align: center;
+        margin: 1em;
+    }
     .text {
         color: white;
         font-family: 'Nanum Gothic', 돋움;
@@ -27,43 +48,55 @@
         text-align: center;
     }
     .answer {
+        width:70%;
         font-family: 'Nanum Gothic', 돋움;
-        font-size: 50px;
+        font-size: 4vw;
         font-weight: bolder;
         text-align: center;
     }
     .button {
+        width: 20%;
         font-family: 'Nanum Gothic', 돋움;
-        font-size: 50px;
+        font-size: 4vw;
         font-weight: bolder;
         text-align: center;
+    }
+    .containers {
+        //background-color: #ff00ff;
+        overflow:hidden;
+        width: 100vw;
+        height: 100vh;
+    }
+    .col-md {
+        width: 100%;
     }
 </style></head>
 
 <body>
-    <div class="container">
+    <div class="containers">
         <div class="col">
-            <div class="col-md-1">
-                <h1 class="text">
+            <div class="col-md">
+                <h1 class="header">
                     {{ cls }}
                 </h1>
             </div>
-            <div class="col-md-1">
-                <form class="text">
-                    {{ count }}번 문제. {{ info }}
+            <div class="col-md">
+                <form class="quest">
+                    {{ count }}번 문제.<br>
+                    {{ info }}
                 </form>
             </div>
-            <div class="col-md-1">
+            <div class="col-md">
                 <form class="text" action="/first/answer/" method="post">
                     {% csrf_token %}
-                    <input type="text" name="a">
+                    <input class="answer" type="text" name="a" placeholder="이 곳에 답을 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder='이 곳에 답을 입력하세요.'">
                     {% for data in info %}
                         <input type="hidden" name="id" value="{{ data.id }}">
                     {% endfor %}
                     <input type="hidden" name="count" value="{{ count }}">
                     <input type="hidden" name="result" value="{{ result }}">
-                    <input type="hidden" name="answer" value="{{ answer }}">
-                    <input type="submit" value="정답 확인">
+                    <input class="answer" type="hidden" name="answer" value="{{ answer }}">
+                    <input class="button" type="submit" value="답안 제출">
                 </form>
             </div>
         </div>
