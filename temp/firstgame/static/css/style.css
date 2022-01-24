@@ -1,0 +1,210 @@
+@font-face {
+    font-family: "retro";
+    src: url("../font/Super\ Retro\ Italic\ M54.ttf");
+}
+
+@keyframes bgMove {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 0 900px;
+    }
+}
+
+@keyframes imageMove {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-50px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes textMove {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-25px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+body {
+    background-color: black;
+}
+
+.background {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../image/background.jpeg");
+    background-size: cover;
+    background-position: 0 0;
+    background-repeat: repeat-y;
+    z-index: -1;
+    animation: bgMove 10s linear infinite;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.start-text {
+    margin-top: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "retro";
+    font-size: 70px;
+    color: orange;
+    opacity: 88%;
+    text-shadow: -3px 0 orangered, 0 3px orangered, 3px 0 orangered, 0 -3px orangered;
+    animation: textMove 1.5s ease-in-out infinite;
+}
+.line {
+    margin-top: 15px;
+    background-color: orangered;
+    width: 550px;
+    height: 10px;
+    border-radius: 3px;
+    opacity: 90%;
+    animation: textMove 1.5s 0.2s ease-in-out infinite;
+}
+
+.start-text-shadow {
+    margin-left: 50px;
+    margin-top: -53px;
+    font-family: "retro";
+    font-size: 70px;
+    color: black;
+    z-index: -1;
+    opacity: 80%;
+    animation: textMove 1.5s 0.1s ease-in-out infinite;
+}
+
+.rocket-image {
+    width: 100vw;
+}
+
+#rocket {
+    margin-top: 7%;
+    margin-left: 25.5%;
+    width: 60px;
+    height: 80px;
+}
+
+.image-container {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+#earth {
+    cursor: pointer;
+    margin-left: 40px;
+    margin-right: 40px;
+    width: 130px;
+    height: 115px;
+}
+
+#moon {
+    cursor: pointer;
+    margin-left: 40px;
+    margin-right: 40px;
+    width: 130px;
+    height: 115px;
+}
+
+#saturn {
+    cursor: pointer;
+    margin-left: 40px;
+    margin-right: 40px;
+    width: 140px;
+    height: 125px;
+}
+
+#jupyter {
+    cursor: pointer;
+    margin-left: 40px;
+    margin-right: 40px;
+    width: 130px;
+    height: 115px;
+}
+
+.image-container--earth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-container--moon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.image-container--saturn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.image-container--jupyter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.status-bar {
+    position: fixed;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.status-bar .keyboard-command__text {
+    display: flex;
+    margin-top: -10px;
+    margin-right: 100px;
+}
+
+.status-bar .keyboard-command__text img {
+    width: 50px;
+    height: 50px;
+}
+
+.status-bar .keyboard-command__text h1 {
+    margin-top: 15px;
+    margin-left: 51px;
+}
+
+.status-bar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 0 40px 40px;
+}
+
+.status-bar .login-menu {
+    margin-top: -62px;
+    margin-right: 40px;
+}
+
+.github-icon:hover,
+.email-icon:hover {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    transition: all 0.3s linear;
+}
