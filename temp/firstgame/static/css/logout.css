@@ -11,10 +11,12 @@ body {
     color: aliceblue;
 }
 
-form {
+
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: -10px;
 }
 
 form button {
@@ -25,12 +27,16 @@ form button {
     outline: none;
     border: none;
     color: olivedrab;
+    margin-right: 8px;
 }
 
-form button:first-child {
-    margin-right: 40px;
-}
-
-form button:last-child {
-    margin-left: 40px;
+button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    color: olivedrab;
+    margin-left: 64px;
 }
