@@ -43,3 +43,19 @@ class words(models.Model):
 
     def __str__(self):
         return self.answer
+
+class Music(models.Model):
+    quiz = models.TextField()
+    answer = models.TextField()
+    link = models.TextField()
+    info = models.TextField()
+    hint = models.TextField()
+
+    class Meta:
+        db_table = '음악'
+        app_label = 'secondapp'
+        ordering = ['id']
+        managed = False
+
+    def __str__(self):
+        return self.info

@@ -6,8 +6,10 @@ urlpatterns = [
     path('test/', views.test),
     path('start/', views.start),
     path('testmusic/', views.testmusic),
-    path('quiz/', views.quiz),
-    path('answer/', views.answer),
+    path('wordquiz/', views.wordquiz),
+    path('wordanswer/', views.wordanswer),
+    path('musicquiz/', views.musicquiz),
+    path('musicanswer/', views.musicanswer),
     path('quiz/home', views.home),
     path('insert/', views.insert),
 ]

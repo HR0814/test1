@@ -104,13 +104,16 @@
             <div class="col-md">
                 <form class="quest">
                     {{ count }}번 문제.<br>
-                    {% for data in info %}
-                        {{ data.quiz }}
-                    {% endfor %}
+                    다음 음악을 듣고 음악의 제목을 맞추세요.<br><br>
+                    <audio controls="controls" id="audioVolume">
+                        {% for data in info %}
+                            <source src="{{ data.quiz }}" type="audio/wav">
+                        {% endfor %}
+                    </audio>
                 </form>
             </div>
             <div class="col-md">
-                <form class="text" action="/first/answer/" method="post">
+                <form class="text" action="/first/musicanswer/" method="post">
                     {% csrf_token %}
                     <input class="answer" type="text" name="a" placeholder="이 곳에 답을 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder='이 곳에 답을 입력하세요.'">
                     {% for data in info %}
@@ -143,6 +146,8 @@
                 alert("남은 힌트가 없습니다.")
             }
         });
+        var audio = document.getElementById("audioVolume");
+        audio.volume = 0.3;
     </script>
 </body>
 
