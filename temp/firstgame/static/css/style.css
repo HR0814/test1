@@ -175,7 +175,7 @@ body {
 .status-bar .keyboard-command__text {
     display: flex;
     margin-top: -10px;
-    margin-right: 100px;
+    margin-right: -80px;
 }
 
 .status-bar .keyboard-command__text img {
@@ -206,4 +206,53 @@ body {
     width: 50px;
     height: 50px;
     transition: all 0.3s linear;
+}
+
+.earth-text {
+    font-family: "retro";
+    color: orange;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    margin-top: 10px;
+}
+
+.moon-text {
+    font-family: "retro";
+    color: orange;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    margin-top: 10px;
+}
+
+.saturn-text {
+    font-family: "retro";
+    color: orange;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    margin-top: 10px;
+}
+
+.jupyter-text {
+    font-family: "retro";
+    color: orange;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    margin-top: 10px;
+}
+
+.keyboard-command__text h1 {
+    font-family: "retro";
+    color: aquamarine;
+    font-size: 18px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.login-menu {
+    font-family: "retro";
+    color: tomato;
+}
+
+.login-menu a {
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+a:visited {
+    color: coral;
 }

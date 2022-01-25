@@ -36,7 +36,15 @@ const handleMove = (e) => {
         rocket.style.marginLeft = `${left}%`;
     }
     if (key === "Enter") {
-        console.log("다음 페이지로 이동!");
+        if (c_name === "earth") {
+            window.location.href = "/first/quiz";
+        } else if (c_name === "moon") {
+            window.location.href = "/first/quiz";
+        } else if (c_name === "saturn") {
+            window.location.href = "/first/quiz";
+        } else if (c_name === "jupyter") {
+            window.location.href = "/first/quiz";
+        }
     }
 };
 
