@@ -9,7 +9,6 @@ const saturnText = document.querySelector(".saturn-text");
 const jupyterText = document.querySelector(".jupyter-text");
 const github = document.querySelector(".github-icon");
 
-
 const class_name = ["earth", "moon", "saturn", "jupyter"];
 
 let left = 40.7;
@@ -39,9 +38,9 @@ const handleMove = (e) => {
     }
     if (key === "Enter") {
         if (c_name === "earth") {
-            window.location.href = "/first/quiz";
+            window.location.href = "/first/wordquiz";
         } else if (c_name === "moon") {
-            window.location.href = "/first/quiz";
+            window.location.href = "/first/musicquiz";
         } else if (c_name === "saturn") {
             window.location.href = "/first/quiz";
         } else if (c_name === "jupyter") {
@@ -159,4 +158,4 @@ jupyter.addEventListener("mouseenter", jupyterMouseEnter);
 window.addEventListener("keydown", handleMove);
 github.addEventListener("click", () => {
     document.location.href = "https://github.com/hungeun/1class";
-})
+});
