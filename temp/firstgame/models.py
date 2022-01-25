@@ -16,3 +16,16 @@ class 상식(models.Model):
 
     def __str__(self):
         return '@@@' + self.name
+
+class 영화(models.Model):
+    문제 = models.CharField(max_length=255)
+    정답 = models.CharField(max_length=255)
+    
+    class Meta:
+        db_table = '영화'
+        app_label = 'secondapp'
+        ordering = ['id']
+        managed = False
+
+    def __str__(self):
+        return '@@@' + self.name

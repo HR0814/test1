@@ -140,7 +140,8 @@ def answer(request):
 def home(request):
     return render(request, 'firstgame/index.html', {})
 
-from .models import 상식
+# 데이터 입력
+from .models import 영화
 def insert(request):
-    상식(문제='',정답='',카테고리='').save()
+    # 영화(문제='',정답='').save()
     return HttpResponse('데이터 입력 완료')
