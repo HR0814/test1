@@ -38,12 +38,17 @@
         <table class="table table-striped">
             <tr>
                 <td>문항</td>
+                <td>문제</td>
+                <td>입력한 답</td>
                 <td>결과</td>
             </tr>
+            {% load print_array %}
             {% for data in result %}
             <tr>
                 <td>{{ forloop.counter }}번</td>
-                <td>{% if data == "1" %} 정답 {% else %} 오답 {% endif %}</td>
+                <td>{{ quizList | index:forloop.counter0 }}</td>
+                <td>{{ answerList | index:forloop.counter0 }}</td>
+                <td>{% if data.0 == "1" %} 정답 {% else %} 오답 {% endif %}</td>
             </tr>
             {% endfor %}
         </table>
