@@ -77,6 +77,7 @@ def quiz(request):
         count = request.POST.get('count')
         result = request.POST.get('result')
         hint = request.POST.get('hint')
+        answerList = request.POST.get('answerList')
     elif request.method == 'GET':
         count = 1
         result = ""
@@ -87,15 +88,19 @@ def quiz(request):
         for i in range(1, len(rand)):
             str += " %s" % rand[i]
         rand = str.split(" ")
+        answerList = ""
     if count is None:
         count = 1
 
     info = p.page(int(rand[int(count) - 1]))
-    print("LOG : ", info)
     print("quiz에서 받음 : /%s/%s/ " % (rand, str))
     if int(count) > 10:
+        aList = answerList.split("|")[:-1]
+        qList = [words.objects.get(id=int(i)).quiz for i in rand]
         context = {
             'result': result,
+            'answerList': aList,
+            'quizList': qList,
         }
         return render(request, 'firstgame/result.html', context)
     else:
@@ -105,6 +110,7 @@ def quiz(request):
             'result': result,
             'rand': str,
             'hint': hint,
+            'answerList': answerList,
         }
     return render(request, 'firstgame/quiz.html', context)
 
@@ -118,11 +124,11 @@ def answer(request):
         result = request.POST.get('result')
         str = request.POST.get('rand')
         hint = request.POST.get('hint')
-        print("/" + str + "/")
+        answerList = request.POST.get('answerList')
         rand = str.split(" ")
         answer = words.objects.get(id=int(rand[int(count) - 1]))
+        answerList += "%s|" % (a)
         print("answer에서 받음 : /%s/%s/ " % (rand, str))
-        print("LOG : ", answer.answer)
         if answer.answer == a:
             answer = count + "번 문제는 정답입니다."
             result += "1"
@@ -136,6 +142,7 @@ def answer(request):
             'result': result,
             'rand': str,
             'hint': hint,
+            'answerList': answerList,
         }
 
     return render(request, 'firstgame/answer.html', data)
