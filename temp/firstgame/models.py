@@ -29,3 +29,17 @@ class 영화(models.Model):
 
     def __str__(self):
         return '@@@' + self.name
+
+class words(models.Model):
+    quiz = models.TextField()
+    answer = models.TextField()
+    hint = models.TextField()
+
+    class Meta:
+        db_table = '단어'
+        app_label = 'secondapp'
+        ordering = ['id']
+        managed = False
+
+    def __str__(self):
+        return self.answer

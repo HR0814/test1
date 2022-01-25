@@ -25,12 +25,19 @@
         height: 100%;
     }
     .header {
-        background-color: ghostwhite;
         color: black;
         font-family: 'Dongle', sans-serif;
         font-size: 50px;
         font-weight: bolder;
         text-align: center;
+    }
+    .hint {
+        color: black;
+        font-family: 'Dongle', sans-serif;
+        font-size: 35px;
+        font-weight: bolder;
+        text-align: center;
+        line-height: 10vh;
     }
     .quest {
         color: white;
@@ -71,22 +78,34 @@
         width: 100%;
     }
 </style></head>
-
+{% comment %} <h1 class="header">
+    단어 맞추기
+</h1> {% endcomment %}
 <body>
+    <div class="container-fluid", style="background-color:ghostwhite;">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="header">
+                    단어 맞추기
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="hint">
+                    <h1 class="hint" type="button" id="hint">
+                        Hint
+                    </h1>
+                </div>
+            </div>  
+        </div>
+    </div>
     <div class="containers">
         <div class="col">
-            <div class="col-md">
-                <h1 class="header">
-                    {% for data in info %}
-                        {{ data.카테고리 }}
-                    {% endfor %}
-                </h1>
-            </div>
             <div class="col-md">
                 <form class="quest">
                     {{ count }}번 문제.<br>
                     {% for data in info %}
-                        {{ data.문제 }}
+                        {{ data.quiz }}
                     {% endfor %}
                 </form>
             </div>
@@ -100,6 +119,7 @@
                     <input type="hidden" name="count" value="{{ count }}">
                     <input type="hidden" name="result" value="{{ result }}">
                     <input type="hidden" name="rand" value="{{ rand }}">
+                    <input type="hidden" id="hintCount" name="hint" value="{{ hint }}">
                     <input class="answer" type="hidden" name="answer" value="{{ answer }}">
                     <input class="button" type="submit" value="답안 제출">
                 </form>
@@ -112,6 +132,15 @@
     <script>
         jQuery( function() {
             jQuery( '#background' ).YTPlayer();
+        });
+        document.getElementById("hint").addEventListener("click", () => {
+            h = document.getElementById("hintCount")
+            h.value = h.value - 1
+            if(h.value >= 0) {
+                alert("남은 힌트 회수 : " + h.value + "\n{% for data in info %}{{ data.hint }}{% endfor %}");
+            } else {
+                alert("남은 힌트가 없습니다.")
+            }
         });
     </script>
 </body>

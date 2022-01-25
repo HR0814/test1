@@ -68,30 +68,30 @@ def testmusic(request):
 
 
 def quiz(request):
-    datas = 상식.objects.order_by('고유번호')
+    datas = words.objects.order_by('id')
     p = Paginator(datas, 1)
-
+    
     if request.method == 'POST':
         str = request.POST.get("rand")
         rand = str.split(" ")
-        id = request.POST.get('id')
         count = request.POST.get('count')
         result = request.POST.get('result')
+        hint = request.POST.get('hint')
     elif request.method == 'GET':
         count = 1
         result = ""
+        hint = 3
         rand = random.sample(range(1, p.count), 10 + 1)
         str = ""
         str += "%s" % rand[0]
         for i in range(1, len(rand)):
             str += " %s" % rand[i]
-    else:
-        id = 1
+        rand = str.split(" ")
     if count is None:
         count = 1
-    num = 2
 
     info = p.page(int(rand[int(count) - 1]))
+    print("LOG : ", info)
     print("quiz에서 받음 : /%s/%s/ " % (rand, str))
     if int(count) > 10:
         context = {
@@ -104,6 +104,7 @@ def quiz(request):
             'count': count,
             'result': result,
             'rand': str,
+            'hint': hint,
         }
     return render(request, 'firstgame/quiz.html', context)
 
@@ -116,11 +117,13 @@ def answer(request):
         count = request.POST.get('count')
         result = request.POST.get('result')
         str = request.POST.get('rand')
+        hint = request.POST.get('hint')
         print("/" + str + "/")
         rand = str.split(" ")
-        answer = 상식.objects.get(고유번호=int(rand[int(count) - 1]))
+        answer = words.objects.get(id=int(rand[int(count) - 1]))
         print("answer에서 받음 : /%s/%s/ " % (rand, str))
-        if answer.정답 == a:
+        print("LOG : ", answer.answer)
+        if answer.answer == a:
             answer = count + "번 문제는 정답입니다."
             result += "1"
         else:
@@ -132,10 +135,10 @@ def answer(request):
             'count': count,
             'result': result,
             'rand': str,
+            'hint': hint,
         }
 
     return render(request, 'firstgame/answer.html', data)
-
 
 def home(request):
     return render(request, 'firstgame/index.html', {})
