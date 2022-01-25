@@ -10,6 +10,8 @@ urlpatterns = [
     path('wordanswer/', views.wordanswer),
     path('musicquiz/', views.musicquiz),
     path('musicanswer/', views.musicanswer),
+    path('moviequiz/', views.moviequiz),
+    path('movieanswer/', views.movieanswer),
     path('quiz/home', views.home),
     path('insert/', views.insert),
 ]

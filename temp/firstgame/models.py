@@ -59,3 +59,18 @@ class Music(models.Model):
 
     def __str__(self):
         return self.info
+
+class Movie(models.Model):
+    quiz = models.TextField()
+    answer = models.TextField()
+    info = models.TextField()
+    hint = models.TextField()
+
+    class Meta:
+        db_table = '영화'
+        app_label = 'secondapp'
+        ordering = ['id']
+        managed = False
+
+    def __str__(self):
+        return self.answer

@@ -234,3 +234,83 @@ def musicanswer(request):
         }
 
     return render(request, 'firstgame/musicanswer.html', data)
+
+def moviequiz(request):
+    datas = Movie.objects.order_by('id')
+    p = Paginator(datas, 1)
+    
+    if request.method == 'POST':
+        str = request.POST.get("rand")
+        rand = str.split(" ")
+        count = request.POST.get('count')
+        result = request.POST.get('result')
+        hint = request.POST.get('hint')
+        answerList = request.POST.get('answerList')
+    elif request.method == 'GET':
+        count = 1
+        result = ""
+        hint = 3
+        rand = random.sample(range(1, p.count), 3 + 1)
+        str = ""
+        str += "%s" % rand[0]
+        for i in range(1, len(rand)):
+            str += " %s" % rand[i]
+        rand = str.split(" ")
+        answerList = ""
+    if count is None:
+        count = 1
+
+    info = p.page(int(rand[int(count) - 1]))
+    print("quiz에서 받음 : /%s/%s/ " % (rand, str))
+    if int(count) > 3:
+        aList = answerList.split("|")[:-1]
+        qList = [Movie.objects.get(id=int(i)).quiz for i in rand]
+        context = {
+            'result': result,
+            'answerList': aList,
+            'quizList': qList,
+        }
+        return render(request, 'firstgame/movieresult.html', context)
+    else:
+        context = {
+            'info': info,
+            'count': count,
+            'result': result,
+            'rand': str,
+            'hint': hint,
+            'answerList': answerList,
+        }
+    return render(request, 'firstgame/moviequiz.html', context)
+
+
+def movieanswer(request):
+    if request.method == 'POST':
+        num2 = request.POST.get('id')
+        info = request.POST.get('info')
+        a = request.POST.get('a')
+        count = request.POST.get('count')
+        result = request.POST.get('result')
+        str = request.POST.get('rand')
+        hint = request.POST.get('hint')
+        answerList = request.POST.get('answerList')
+        rand = str.split(" ")
+        answer = Movie.objects.get(id=int(rand[int(count) - 1]))
+        answerList += "%s|" % (a)
+        print("answer에서 받음 : /%s/%s/ " % (rand, str))
+        if answer.answer == a:
+            answer = count + "번 문제는 정답입니다."
+            result += "1"
+        else:
+            answer = count + "번 문제는 오답입니다."
+            result += "0"
+        data = {
+            'info': answer,
+            'id': num2,
+            'count': count,
+            'result': result,
+            'rand': str,
+            'hint': hint,
+            'answerList': answerList,
+        }
+
+    return render(request, 'firstgame/movieanswer.html', data)

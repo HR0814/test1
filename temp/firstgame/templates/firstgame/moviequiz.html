@@ -77,6 +77,10 @@
     .col-md {
         width: 100%;
     }
+    .video {
+        height:20vh;
+        border: solid red;
+    }
 </style></head>
 {% comment %} <h1 class="header">
     단어 맞추기
@@ -87,7 +91,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <div class="header">
-                    음악 이름 맞추기
+                    명대사 듣고 영화 제목 맞추기
                 </div>
             </div>
             <div class="col-md-2">
@@ -104,16 +108,18 @@
             <div class="col-md">
                 <form class="quest">
                     {{ count }}번 문제.<br>
-                    다음 음악을 듣고 음악의 제목을 맞추세요.<br><br>
-                    <audio controls="controls" id="audioVolume">
-                        {% for data in info %}
-                            <source src="{{ data.quiz }}" type="audio/wav">
-                        {% endfor %}
-                    </audio>
+                    다음 명대사를 듣고 영화의 제목을 맞추세요.<br>
                 </form>
+                <div style="text-align:center;">
+                    <video controls="controls" class="video">
+                        {% for data in info %}
+                            <source src="{{ data.quiz }}" type="video/mp4">
+                        {% endfor %}
+                    </video>
+                </div><br><br>
             </div>
             <div class="col-md">
-                <form class="text" action="/first/musicanswer/" method="post">
+                <form class="text" action="/first/movieanswer/" method="post">
                     {% csrf_token %}
                     <input class="answer" type="text" name="a" placeholder="이 곳에 답을 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder='이 곳에 답을 입력하세요.'">
                     {% for data in info %}
@@ -146,8 +152,6 @@
                 alert("남은 힌트가 없습니다.")
             }
         });
-        var audio = document.getElementById("audioVolume");
-        audio.volume = 0.3;
     </script>
 </body>
 
