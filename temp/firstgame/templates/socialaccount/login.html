@@ -1,0 +1,8 @@
+{% load i18n %} {% block content %}
+
+<form name="hiddenForm" method="post" type="hidden">{% csrf_token %}</form>
+
+<script>
+    document.hiddenForm.submit();
+</script>
+{% endblock %}

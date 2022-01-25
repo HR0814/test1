@@ -1,0 +1,44 @@
+body {
+    background-color: rgb(37, 39, 41);
+}
+
+.github-login {
+    margin-top: -40px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    color: aliceblue;
+}
+
+.github-login img {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+}
+
+.socialaccount_providers {
+    margin-top: 40px;
+    width: 200px;
+    height: 40px;
+}
+
+.socialaccount_ballot {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.socialaccount_ballot button {
+    cursor: pointer;
+    background-color: rgb(56, 67, 78);
+    border-radius: 20px;
+    color: aliceblue;
+    font-size: 14px;
+    font-weight: 700;
+}

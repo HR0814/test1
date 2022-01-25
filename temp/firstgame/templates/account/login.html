@@ -1,0 +1,14 @@
+{%load static%}{% load i18n %} {% load account socialaccount %} {% block content %}
+
+<link rel="stylesheet" href="{% static 'css/oauth.css'%}" />
+
+<div class="github-login">
+    <div class="title"><h1>Login</h1></div>
+    <img src="{% static 'image/github-icon.png'%}" alt="github-icon" />
+    <div class="socialaccount_ballot">
+        <button class="socialaccount_providers" onclick="location.href='/accounts/github/login/?process=login'">Login with GitHub</button>
+        <button class="socialaccount_providers" onclick="location.href='/'">Continue without Login</button>
+    </div>
+</div>
+
+{% endblock %}
