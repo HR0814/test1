@@ -66,6 +66,24 @@
                     <input type="hidden" name="answerList" value="{{ answerList }}">
                     <input type="hidden" name="count" value="{{ count | add:'1' }}">
                     <input class="button" type="submit" value="다음 문제">
+                    {% load print_array %}
+                    {% for i in result %}
+                        {% if forloop.last %}
+                            {% if i == "1" %}
+                            <div style="display:none">
+                                <audio autoplay="autoplay" id="audioVolume">
+                                    <source src="/static/sound/실로폰.wav" type="audio/wav">
+                                </audio>
+                            </div>
+                            {% else %}
+                            <div style="display:none">
+                                <audio autoplay="autoplay" id="audioVolume">
+                                    <source src="/static/sound/땡.wav" type="audio/wav">
+                                </audio>
+                            </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
                 </form>
             </div>
         </div>
@@ -77,6 +95,8 @@
         jQuery( function() {
             jQuery( '#background' ).YTPlayer();
         });
+        var audio = document.getElementById("audioVolume");
+        audio.volume = 0.2;
     </script>
 </body>
 </html>
