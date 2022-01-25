@@ -7,6 +7,8 @@ const earthText = document.querySelector(".earth-text");
 const moonText = document.querySelector(".moon-text");
 const saturnText = document.querySelector(".saturn-text");
 const jupyterText = document.querySelector(".jupyter-text");
+const github = document.querySelector(".github-icon");
+
 
 const class_name = ["earth", "moon", "saturn", "jupyter"];
 
@@ -147,3 +149,6 @@ moon.addEventListener("mouseenter", moonMouseEnter);
 saturn.addEventListener("mouseenter", saturnMouseEnter);
 jupyter.addEventListener("mouseenter", jupyterMouseEnter);
 window.addEventListener("keydown", handleMove);
+github.addEventListener("click", () => {
+    document.location.href = "https://github.com/hungeun/1class";
+})
