@@ -89,7 +89,11 @@
     <body>
         <div class="container-fluid" , style="background-color: ghostwhite">
             <div class="row">
-                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    <h1 class="hint" type="button" id="home">
+                        홈으로
+                    </h1>
+                </div>
                 <div class="col-md-8">
                     <div class="header">노래 맞추기</div>
                 </div>
@@ -156,6 +160,11 @@
             });
             var audio = document.getElementById("audioVolume");
             audio.volume = 0.3;
+            document.getElementById("home").addEventListener("click", () => {
+                if(confirm("홈으로 돌아가시겠습니까?")) {
+                    location.replace("./../..")
+                }
+            });
         </script>
     </body>
 </html>
