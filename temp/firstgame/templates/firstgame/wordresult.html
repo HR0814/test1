@@ -53,5 +53,15 @@
             {% endfor %}
         </table>
         <button calss="button" onclick="location.href='../../'">돌아가기</button>
+        &nbsp; &nbsp; &nbsp; &nbsp;
+        
+        <form method = "post" action = "rank/">
+            {% csrf_token %}
+            <button calss="button" onclick="location.href='rank/'">랭킹 등록</button>
+            <div id="login">
+                <input type="hidden" name="result" value='{{result}}' placeholder="username"/>
+            </div>
+        </form>
+    
     </body>
 </html>

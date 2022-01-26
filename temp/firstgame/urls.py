@@ -14,4 +14,5 @@ urlpatterns = [
     path('movieanswer/', views.movieanswer),
     path('quiz/home', views.home),
     path('insert/', views.insert),
+    path('wordquiz/rank/', views.rank),
 ]

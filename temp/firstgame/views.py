@@ -149,6 +149,31 @@ def wordanswer(request):
 def home(request):
     return render(request, 'firstgame/index.html', {})
 
+def rank(request):
+    result = request.POST.get('result')
+    num = request.POST.get('num')
+    sc = request.POST.get('sc')
+    nick = request.POST.get('nick')
+    try:
+        if int(num) > 0:
+            r = 랭킹(닉네임 = nick, 점수 =int(sc)*100)
+            r.save()
+    except TypeError:
+        pass
+    score = 0
+    for i in list(result):
+        if i == '1':  score += 1
+    
+    랭커 = 랭킹.objects.all()  
+    p = Paginator(랭커, 10)  
+    p = p.page(1)
+
+    data = {
+        'score': score, 'p' : p
+    }
+    return render(request, 'firstgame/rank.html', data)
+
+
 # 데이터 입력
 from .models import 영화
 def insert(request):

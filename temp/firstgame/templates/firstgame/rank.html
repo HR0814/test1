@@ -1,0 +1,46 @@
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div class="container my-3">
+    <div class="row my-3">
+        <div class="col-4">
+            <h2>랭킹 등록 - 단어 퀴즈</h2>
+            <hr size="10px" >
+        </div>
+    </div>
+    <form method="post" class="post-form" action = "/first/wordquiz/rank/">
+        {% csrf_token %}
+        <div class="form-group">
+            <h5>
+            현재 점수는 {{score}}00점 입니다.</h5>
+            <br>
+            <input class="nick" type="text" name="nick" placeholder="등록하실 닉네임을 입력하세요." style="width:500px;height:30px;font-size:15px;" onfocus="this.placeholder=''" onblur="this.placeholder='등록하실 닉네임을 입력하세요.'">
+            <input type="hidden" name="result" value='{{result}}' placeholder="username"/>
+            <input type="hidden" name="num" value='999' placeholder="username"/>
+            <input type="hidden" name="sc" value='{{score}}' placeholder="username"/>
+            </div>
+            <button type="submit" class="btn btn-primary">랭킹 등록하기</button>
+    </form>
+    <button type="submit" onclick="location.href='../../../'" class="btn btn-primary">돌아 가기</button>
+    <body>
+<br>
+<br>
+        <h1>랭킹</h1>
+        <table class="table table-striped">
+            <tr>
+                <td>순위</td>
+                <td>닉네임</td>
+                <td>점수</td>
+            </tr>
+            {% load print_array %}
+            {% for data in p %}
+            <tr>
+                <td>{{ forloop.counter }}위</td>
+                <td>{{ data.닉네임 }}</td>
+                <td>{{ data.점수 }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        
+    </body>
+</div>
+            

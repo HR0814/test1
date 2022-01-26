@@ -74,3 +74,16 @@ class Movie(models.Model):
 
     def __str__(self):
         return self.answer
+
+class 랭킹(models.Model):
+    닉네임 = models.CharField(max_length=50)
+    점수 = models.IntegerField()
+    
+    class Meta:
+        db_table = '랭킹'
+        app_label = 'secondapp'
+        ordering = ['-점수']
+        managed = False
+
+    def __str__(self):
+        return self.answer
