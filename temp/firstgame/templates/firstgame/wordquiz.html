@@ -84,7 +84,11 @@
 <body>
     <div class="container-fluid", style="background-color:ghostwhite;">
         <div class="row">
-            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <h1 class="hint" type="button" id="home">
+                    홈으로
+                </h1>
+            </div>
             <div class="col-md-8">
                 <div class="header">
                     단어 맞추기
@@ -141,6 +145,11 @@
                 alert("남은 힌트 회수 : " + h.value + "\n{% for data in info %}{{ data.hint }}{% endfor %}");
             } else {
                 alert("남은 힌트가 없습니다.")
+            }
+        });
+        document.getElementById("home").addEventListener("click", () => {
+            if(confirm("홈으로 돌아가시겠습니까?")) {
+                location.replace("./../..")
             }
         });
     </script>
